@@ -1,0 +1,11 @@
+[project]
+name = "st-cl-2025-2-lab"
+version = "0.1.0"
+description = "Repositorio para prácticas de laboratorio de temas selectos de lingüística computacional"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jupyterlab>=4.3.4",
+    "nltk>=3.9.1",
+    "pandas>=2.2.3",
+]
