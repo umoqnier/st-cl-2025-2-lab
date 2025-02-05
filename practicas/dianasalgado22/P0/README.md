@@ -3,7 +3,7 @@ $ cat README.md
 # Diana Laura Salgado Tirado
 
 - Número de cuenta: `421110274`
-- User de Github: @dianasalgado22
+- User de Github: @DianaSalgado22
 - Me gusta que me llamen: Diana
 
 ## Pasatiempos
@@ -13,4 +13,4 @@ $ cat README.md
 
 ## Proyectos en los que he participado y que me enorgullesen 🖤
 
-- Me falta trabajar en mi git hub, aun no subo ninguno :D
+- Me falta trabajar en mi git hub, aun no subo ninguno :c
