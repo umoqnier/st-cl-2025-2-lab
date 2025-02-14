@@ -4,7 +4,9 @@
 
 ### ⚙️ **Requisitos y Dependencias**  
 La práctica utiliza las mismas dependencias vistas en clase, con la adición de la librería `Levenshtein`. 
+
 Para instalar esta dependencia, ejecuta el siguiente comando:
+
 pip install python-Levenshtein
 
 ### 📌 **Notas**  
