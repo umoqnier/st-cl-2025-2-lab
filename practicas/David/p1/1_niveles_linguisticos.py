@@ -412,7 +412,7 @@ display_rhyming_patterns(rhyming_words)
 # + id="c87a1b9d-848c-488f-b2e4-1782f07bc557"
 # !espeak -v es "Hola que hace" -w mi-prueba.wav
 
-# + [markdown] id="9fc31a40-1d6e-4c56-b07e-74a0c47a89c4" jp-MarkdownHeadingCollapsed=true
+# + [markdown] id="9fc31a40-1d6e-4c56-b07e-74a0c47a89c4"
 # ## Morfología
 
 # + [markdown] id="GJ10fzsXvFSS"
@@ -975,7 +975,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 assert len(X_train) + len(X_test) == len(corpora), "Something wrong with my split :("
 assert len(y_train) + len(y_test) == len(corpora), "Something wrong with my split :("
 
-# + colab={"base_uri": "https://localhost:8080/"} executionInfo={"elapsed": 25901, "status": "ok", "timestamp": 1738781912893, "user": {"displayName": "Diego Alberto Barriga Mart\u00ednez", "userId": "06235177150913802056"}, "user_tz": 360} id="cba343a2-482f-4c67-a842-704ab5fc6f3e" outputId="3355fa0f-d2f3-4c66-de0b-595c8b754495" jupyter={"outputs_hidden": true}
+# + colab={"base_uri": "https://localhost:8080/"} executionInfo={"elapsed": 25901, "status": "ok", "timestamp": 1738781912893, "user": {"displayName": "Diego Alberto Barriga Mart\u00ednez", "userId": "06235177150913802056"}, "user_tz": 360} id="cba343a2-482f-4c67-a842-704ab5fc6f3e" outputId="3355fa0f-d2f3-4c66-de0b-595c8b754495"
 from inspect import Attribute
 from sklearn_crfsuite import CRF
 # Initialize and train the CRF tagger: https://sklearn-crfsuite.readthedocs.io/en/latest/api.html
@@ -998,7 +998,8 @@ report = classification_report(y_true=y_test_flat, y_pred=y_pred_flat)
 print(report)
 
 
-# + [markdown] jp-MarkdownHeadingCollapsed=true
+# -
+
 # ## Tarea 1: Niveles del lenguaje
 #
 # ### FECHA DE ENTREGA: 16 de Febrero 2025 at 11:59pm
@@ -1011,17 +1012,17 @@ print(report)
 # +
 def edit_distance(word1: str, word2: str) -> int:
     """
-    Calcula la distancia de edición (distancia de Levenshtein) entre dos palabras.
-    
-    La distancia de edición es el número mínimo de operaciones requeridas para transformar
-    una palabra en otra. Las operaciones permitidas son:
-    - Inserción de un carácter
-    - Eliminación de un carácter
-    - Sustitución de un carácter
+    Calculate the edit distance (Levenshtein distance) between two words.
+
+    The edit distance is the minimum number of operations required to transform one word into another.
+    The allowed operations are:
+      - Insertion of a character
+      - Deletion of a character
+      - Substitution of a character
     
     Args:
-        word1 (str): Primera palabra.
-        word2 (str): Segunda palabra.
+        word1 (str): First word.
+        word2 (str): Second word.
     
     Returns:
         int: La distancia de edición entre word1 y word2.
@@ -1084,7 +1085,7 @@ while lang:
     results, exact_match = get_ipa_transcriptions_boosted(query, sub_dataset)
     if not exact_match:
         rprint("Quizás quisiste decir:")
-        for result in results: rprint(result[0], " | ", ", ".join(result[1]))
+        rprint(" \n ".join([str(result[0]) + " | " + ", ".join(result[1]) for result in results]))
     else:
         rprint(query, " | ", ", ".join(results))
     while query:
@@ -1093,7 +1094,7 @@ while lang:
             results, exact_match = get_ipa_transcriptions_boosted(query, sub_dataset)
             if not exact_match:
                 rprint("Quizás quisiste decir:")
-                for result in results: rprint(result[0], " | ", ", ".join(result[1]))
+                rprint("\n".join([str(result[0]) + " | " + ", ".join(result[1]) for result in results]))
             else:
                 rprint(query, " | ", ", ".join(results))
     lang = input("lang>> ")
@@ -1115,11 +1116,99 @@ while lang:
 #     - Con base en esta información elabore una conclusión lingüística sobre la morfología de las lenguas analizadas.
 # -
 
+data_langs = {LANGS[lang]: raw_corpus_to_dataframe(get_raw_corpus(get_track_files(lang)), lang) for lang in LANGS.keys()}
 
+data_langs["Spanish"].head()
+
+# +
+fig = plt.figure(layout='constrained', figsize=(30, 20))
+fig.suptitle('Análisis estadístico descriptivo de los datos morfológicos', fontsize=20)
+
+subfigs = fig.subfigures(2, 4)
+
+colors = plt.cm.tab10.colors
+
+for i, (lang, data) in enumerate(data_langs.items()):
+    
+    subfigs[i // 4, i % 4].set_facecolor('lightgrey')
+    if len(data['category'].unique()) == 1:
+        ax = subfigs[i // 4, i % 4].subplots(2,1)
+    else:
+        ax = subfigs[i // 4, i % 4].subplots(3,1)
+        
+    ax[0].hist(data['word_len'], bins=int(len(data['word_len'].unique())*0.95), edgecolor='black', color=colors[i])
+    ax[0].set_title(f'Word Length Distribution for {lang}')
+    ax[0].set_xlabel('Word Length')
+    ax[0].set_ylabel('Frequency')
+    
+    if 1 < len(data['category'].unique()):
+        ax[1].bar(data['category'].value_counts().index, data['category'].value_counts().values, color=colors[i])
+        ax[1].set_title(f'Category Frequency for {lang}')
+        ax[1].set_xlabel('Category')
+        ax[1].set_ylabel('Frequency')
+        ax[1].tick_params(axis='x', rotation=45)
+        
+        ax[2].bar(data['morph_count'].value_counts().index, data['morph_count'].value_counts().values, color=colors[i])
+        ax[2].set_title(f'Morpheme Count Distribution for {lang}')
+        ax[2].set_xlabel('Morpheme Count')
+        ax[2].set_ylabel('Frequency')
+    
+    else:
+        ax[1].bar(data['morph_count'].value_counts().index, data['morph_count'].value_counts().values, color=colors[i])
+        ax[1].set_title(f'Morpheme Count Distribution for {lang}')
+        ax[1].set_xlabel('Morpheme Count')
+        ax[1].set_ylabel('Frequency')
+plt.show()
+
+
+# -
+
+def statistics_lang(lang: str) -> list[int, float, float, str]:
+    """
+    Computes summary statistics for a given language from the `data_langs` dataset.
+
+    Parameters:
+    lang (str): The language key to retrieve data from `data_langs`.
+
+    Returns:
+    list[int, float, float, str]: A list containing:
+        - The total count of words (int).
+        - The average word length (float).
+        - The average number of morphemes per word (float).
+        - The most common category (str).
+    """
+    data = data_langs[lang]
+    summarized = data.agg({'words':'count', 'word_len':'mean', 'morph_count':'mean'})
+    mode = data_langs[lang]['category'].mode()[0]
+    return [int(summarized['words']), summarized['word_len'], summarized['morph_count'], mode]
+
+
+for lang in LANGS.values():
+    print([lang] + statistics_lang(lang))
+
+# De las gráficas anteriores podemos observar que de los 8 idiomas, en general siguen una distribución normal en cuanto a la longitud de las palabras, con una media alrededor de 10.5 para 7 idiomas y el Checo con media cercana 7, siendo el Ruso el único que tiene un sesgo considerable hacia la izquierda. 
+#
+# En cuanto a las categorías morfológicas, solo el Checo y el Latín no cuentan con información, para las demás lenguas las categorías comunes más frecuentes son 100 (Inflexión) y 110 (Inflexión y Derivación); sin embargo, para el Inglés la categoría más común es 010 (Derivación) que en los demás idiomas representa el tercer o cuarto lugar en frecuencia y que podría estar relacionado con que el inglés es una lengua poco flexiva (no tienen tantos accidentes en las palabras en cuanto a género y tiempo). Algo que también es interesante es que el Húngaro tiene una frecuencia considerable de las categorías 101 (Inflexión y Compuesto) y 111 (Inflexión, Derivación y Compuesto), cosa que no se observan en los demás idiomas y que podría deberse a que el Húngaro es una lengua aglutinante.
+#
+# Finalmente, de la distribución del número de morfemas que tiene cada palabra, podemos observar que el Inglés, el Francés y el Italiano tienen una distribución similar sesgada a la izquierda, con una media alrededor de 2.5 morfemas por palabra. Por su parte, el Checo y el Español tienen una distribución más uniforme, con una media alrededor de 4 para el Checo y de 3 para el Español, esto podría indicarnos que estas dos lenguas permiten una mayor libertad en la generación de palabras. El Ruso presenta una distribución sesgada a la izquierda, acumulando la mayor cantidad de palabras con 2 a 5 morfemas mientras que el Latín tiene una distribución creciente a la derecha y con un máximo de tres morfemas por palabra. 
 
 # ### EXTRA:
 #
 # - Imprimir la [matríz de confusión](https://en.wikipedia.org/wiki/Confusion_matrix) para el etiquetador CRFs visto en clase y elaborar una conclusión sobre los resultados
 
 # + id="oW_JEkMlsSIs"
+from sklearn.metrics import confusion_matrix
+from seaborn import heatmap
 
+# Get the confusion matrix
+cm = confusion_matrix(y_true=y_test_flat, y_pred=y_pred_flat)
+
+plt.figure(figsize=(10, 10))
+heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=crf.classes_, yticklabels=crf.classes_)
+plt.xlabel('Predicted')
+plt.ylabel('True')
+plt.title('Confusion Matrix')
+plt.show()
+# -
+
+# De la matriz de confusión podemos obser un desbalance en la cantidad de etiquetas, concentrando la mayoría en ADP (adposition) y NOUN (noun), lo que podría deberse a que estas son las categorías más comunes en un texto. Por otro lado, las categorías menos comunes como X (other) y PRON (pronoun) tienen una cantidad de etiquetas muy baja, lo que podría deberse a que estas categorías son menos comunes en un texto. En cuanto a los errores, podemos observar que la mayoría de los errores se encuentran en las categorías ADP - DET y DET - NUM, sin embargo en proporción a la cantidad de ejemplos clasificados correctamente, estos errores son mínimos, pero podrían deberse a que estas categorías son similares en cuanto a su función gramatical.
