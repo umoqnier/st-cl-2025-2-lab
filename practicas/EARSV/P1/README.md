@@ -1,0 +1,1 @@
+Para que todo funcione bien sólo es necesario ejecutar todas las celdas anteriores del notebook.
