@@ -92,3 +92,17 @@ $ cat README.md
 ### EXTRA:
 
 - Imprimir la [matríz de confusión](https://en.wikipedia.org/wiki/Confusion_matrix) para el etiquetador CRFs visto en clase y elaborar una conclusión sobre los resultados
+
+## 2: Propiedades estadísticas de la lengua
+
+### Fecha de entrega: 2 de Marzo de 2025 11:59pm
+
+1. Verificar si la ley de Zipf se cumple en un lenguaje artificial creado por ustedes.
+    - *Ejemplo:* Un "lenguaje artificial" podría ser simplemente un texto donde las secuencias de caracteres fueron generadas aleatoriamente.
+2. Explorar `datasets` del sitio [Hugging Face](https://huggingface.co/datasets) y elegir documentos de diferentes dominios en Español (al menos 3). Realizar reconocimiento de entidades nombradas (NER).
+    - Pueden utilizar subconjuntos de los datasets encontrados
+    - Mostrar resultados del reconocimiento
+    - Una distribución de frecuencias de las etiquetas más comunes en cada dominio
+    - Comentarios generales del desempeño observado.
+
+*Sugerencias: Spacy, CoreNLP (puede ser cualquier otra herramienta)*
