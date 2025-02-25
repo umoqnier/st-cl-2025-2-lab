@@ -834,6 +834,15 @@ wheels = [
 ]
 
 [[package]]
+name = "jupyter-ruff"
+version = "0.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/75/5c/347a39f910a2c7182d064bf90cc30ae654801eedff7fbc1d0f7ccee826fa/jupyter_ruff-0.2.0.tar.gz", hash = "sha256:537a5359b6d322c2d51b905c712dc4719c8472414cf1b90f22a3360536f97cd2", size = 3340499 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0b/7b/8d080821d48cefef70c195031ac9fc823e06f5ff69a5e0febf72f28f611f/jupyter_ruff-0.2.0-py3-none-any.whl", hash = "sha256:97a8d951c13cb16c109cc493bc796684ced740c7991c06521916d2d944431dca", size = 3190732 },
+]
+
+[[package]]
 name = "jupyter-server"
 version = "2.15.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2481,6 +2490,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "jupyter" },
+    { name = "jupyter-ruff" },
     { name = "jupyterlab" },
     { name = "jupytext" },
     { name = "matplotlib" },
@@ -2497,6 +2507,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "jupyter", specifier = ">=1.1.1" },
+    { name = "jupyter-ruff", specifier = ">=0.2.0" },
     { name = "jupyterlab", specifier = ">=4.3.4" },
     { name = "jupytext", specifier = ">=1.16.6" },
     { name = "matplotlib", specifier = ">=3.10.0" },
