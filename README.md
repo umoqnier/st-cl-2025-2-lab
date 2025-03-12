@@ -109,7 +109,7 @@ $ cat README.md
 
 ## 3. Práctica: Vectores a palabras
 
-### Fecha de entrega: 16 de Marzo de 2025 @ 11:59pm
+### Fecha de entrega: 19 de Marzo de 2025 @ 11:59pm
 
 Obtenga la matriz de co-ocurrencia para un corpus en español y realice los siguientes calculos:
 - Las probabilidades conjuntas
