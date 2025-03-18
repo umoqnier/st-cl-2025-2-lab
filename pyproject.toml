@@ -5,6 +5,7 @@ description = "Repositorio para prácticas de laboratorio de temas selectos de l
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "gensim>=4.3.3",
     "jupyter>=1.1.1",
     "jupyter-ruff>=0.2.0",
     "jupyterlab>=4.3.4",
