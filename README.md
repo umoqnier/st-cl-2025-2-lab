@@ -127,3 +127,21 @@ Aplica reducción de dimensionalidad (a 2D) de los vectores de la matríz con PP
 - Compara los resultados de los plots:
     - ¿Qué representación dirías que captura mejor relaciones semánticas?
     - Realiza un cuadro comparativo de ambos métodos con ventajas/desventajas
+
+## Práctica 4: Modelos del Lenguaje Neuronales
+
+**Fecha de entrega: 6 de abril de 2025 11:59pm**
+
+A partir del modelo entrenado:
+
+- Sacar los embeddings de las palabras del vocabulario
+
+- Visualizar en 2D los embeddings de algunas palabras (quizá las más frecuentes, excluyendo stopwords)
+
+- Seleccione algunas palabras y verifique sí realmente codifican nociones semánticas, e,g, similitud semántica con similitud coseno entre dos vectores, analogías por medios de operaciones de vectores
+
+### Extra (0.5 pts):
+
+- Correr el modelo de Bengio pero aplicando una técnica de subword tokenization al corpus y hacer generación del lenguaje
+
+- La generación del lenguaje debe ser secuencias de palabras (no subwords)
