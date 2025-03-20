@@ -106,3 +106,42 @@ $ cat README.md
     - Comentarios generales del desempeño observado.
 
 *Sugerencias: Spacy, CoreNLP (puede ser cualquier otra herramienta)*
+
+## 3. Práctica: Vectores a palabras
+
+### Fecha de entrega: 19 de Marzo de 2025 @ 11:59pm
+
+Obtenga la matriz de co-ocurrencia para un corpus en español y realice los siguientes calculos:
+- Las probabilidades conjuntas
+$$p(w_i,w_j) = \frac{c_{i,j}}{\sum_i \sum_j c_{i,j}}$$
+- Las probabilidades marginales
+$$p(w_i) = \sum_j p(w_i,w_j)$$
+- Positive Point Wise Mutual Information (PPMI):
+$$PPMI(w_i,w_j) = \max\{0, \log_2 \frac{p(w_i,w_j)}{p(w_i)p(w_j)}\}$$
+
+**Comparación de representaciones**
+
+Aplica reducción de dimensionalidad (a 2D) de los vectores de la matríz con PPMI y de los vectores entrenados en español:
+
+- Realiza un plot de 100 vectores aleatorios (que esten tanto en la matríz como en los vectores entrenados)
+- Compara los resultados de los plots:
+    - ¿Qué representación dirías que captura mejor relaciones semánticas?
+    - Realiza un cuadro comparativo de ambos métodos con ventajas/desventajas
+
+## Práctica 4: Modelos del Lenguaje Neuronales
+
+**Fecha de entrega: 6 de abril de 2025 11:59pm**
+
+A partir del modelo entrenado:
+
+- Sacar los embeddings de las palabras del vocabulario
+
+- Visualizar en 2D los embeddings de algunas palabras (quizá las más frecuentes, excluyendo stopwords)
+
+- Seleccione algunas palabras y verifique sí realmente codifican nociones semánticas, e,g, similitud semántica con similitud coseno entre dos vectores, analogías por medios de operaciones de vectores
+
+### Extra (0.5 pts):
+
+- Correr el modelo de Bengio pero aplicando una técnica de subword tokenization al corpus y hacer generación del lenguaje
+
+- La generación del lenguaje debe ser secuencias de palabras (no subwords)

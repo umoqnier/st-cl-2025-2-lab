@@ -5,6 +5,8 @@ description = "Repositorio para prácticas de laboratorio de temas selectos de l
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "elotl>=0.1.1",
+    "gensim>=4.3.3",
     "jupyter>=1.1.1",
     "jupyter-ruff>=0.2.0",
     "jupyterlab>=4.3.4",
@@ -12,10 +14,13 @@ dependencies = [
     "matplotlib>=3.10.0",
     "nltk>=3.9.1",
     "pandas>=2.2.3",
+    "pip>=25.0.1",
     "python-levenshtein>=0.26.1",
     "rich[jupyter]>=13.9.4",
     "scikit-learn>=1.6.1",
     "seaborn>=0.13.2",
+    "sentencepiece>=0.2.0",
     "sklearn-crfsuite>=0.5.0",
     "spacy>=3.8.4",
+    "transformers>=4.49.0",
 ]
