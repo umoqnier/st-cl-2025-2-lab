@@ -42,7 +42,7 @@
 # 
 # Para la matriz de co-ocurrencia se hace uso de la función creada en el notebook de la ayudantía.
 
-# In[15]:
+# In[98]:
 
 
 from datasets import load_dataset
@@ -59,7 +59,7 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('spanish'))
 
 
-# In[16]:
+# In[99]:
 
 
 ds = load_dataset("mariagrandury/fake_news_corpus_spanish")
@@ -68,7 +68,7 @@ ds = load_dataset("mariagrandury/fake_news_corpus_spanish")
 #ds = load_dataset("spanish-ir/messirve", "ar")
 
 
-# In[17]:
+# In[ ]:
 
 
 ##############################
@@ -77,6 +77,24 @@ ds = load_dataset("mariagrandury/fake_news_corpus_spanish")
 
 # Preprocesando texto
 def preprocesando_corpus(documentos):
+  """
+    Preprocesa una lista de documentos aplicando limpieza, eliminación de stopwords
+    y filtrado de palabras de longitud menor o igual a 1.
+
+    Parameters
+    ----------
+    documentos : list of str
+        Una lista de cadenas donde cada elemento representa un documento de texto
+        que será sometido a preprocesamiento.
+
+    Returns
+    -------
+    list of list of str
+        Una lista donde cada elemento es una lista de palabras que representa el
+        documento procesado.
+
+  """
+  
   documentos_preprocesados = []
 
   for documento in documentos:
@@ -102,14 +120,14 @@ vocab = set(word for sentence in sentences for word in sentence)
 indices = {word: i for i, word in enumerate(vocab)}
 
 
-# In[67]:
+# In[101]:
 
 
 for sentence in sentences[:5]:
     print(sentence)
 
 
-# In[19]:
+# In[ ]:
 
 
 ##############################
@@ -128,13 +146,71 @@ def get_coocurrence_matrix(sentences: list[list[str]], indices: dict[str, int], 
 # Funciones de cálculos para PPMI
 ##################################
 def joint_probabilities(matrix: np.ndarray) -> np.ndarray:
+    '''
+    Calcula las probabilidades conjuntas a partir de una matriz de co-ocurrencias.
+
+    Esta función normaliza una matriz para obtener las probabilidades conjuntas
+    dividiendo cada elemento entre la suma total de la matriz.
+
+    Parameters
+    ----------
+    matrix : np.ndarray
+        Matriz de co-ocurrencias donde cada entrada representa la frecuencia
+        conjunta de dos elementos.
+
+    Returns
+    -------
+    np.ndarray
+        Matriz de probabilidades conjuntas con los valores normalizados entre 0 y 1.
+    '''
+
     total = np.sum(matrix)
     return matrix / total
 
+
 def marginal_probabilities(joint_probs: np.ndarray) -> np.ndarray:
+    '''
+    Calcula las probabilidades marginales a partir de las probabilidades conjuntas.
+
+    La probabilidad marginal de cada fila se obtiene sumando los valores de esa fila.
+    Esta función asume que las probabilidades conjuntas están normalizadas.
+    
+    Parameters
+    ----------
+    joint_probs : np.ndarray
+        Matriz de probabilidades conjuntas normalizadas.
+
+    Returns
+    -------
+    np.ndarray
+        Vector de probabilidades marginales sumadas a lo largo de las columnas.
+
+    '''
     return np.sum(joint_probs, axis=1)
 
+
 def ppmi(joint_probs: np.ndarray, marginal_probs: np.ndarray) -> np.ndarray:
+    '''
+    Calcula la matriz de PPMI (Pointwise Positive Mutual Information).
+
+    La PPMI mide cuán diferente es la probabilidad conjunta de dos eventos
+    respecto a su independencia. Si el valor es negativo, se establece como cero.
+
+    La fórmula es:
+    PPMI(i, j) = max(0, log2(P(i, j) / (P(i) * P(j))))
+
+    Parameters
+    ----------
+    joint_probs : np.ndarray
+        Matriz de probabilidades conjuntas normalizadas.
+    marginal_probs : np.ndarray
+        Vector de probabilidades marginales de las filas.
+
+    Returns
+    -------
+    np.ndarray
+        Matriz de PPMI donde los valores negativos se reemplazan por 0.
+    '''
     ppmi_matrix = np.zeros_like(joint_probs)
     for i in range(joint_probs.shape[0]):
         for j in range(joint_probs.shape[1]):
@@ -144,7 +220,7 @@ def ppmi(joint_probs: np.ndarray, marginal_probs: np.ndarray) -> np.ndarray:
     return ppmi_matrix
 
 
-# In[20]:
+# In[103]:
 
 
 coocurrence_matrix = get_coocurrence_matrix(sentences, indices)
@@ -152,7 +228,7 @@ C = pd.DataFrame(data=coocurrence_matrix, index=list(indices.keys()), columns=li
 C
 
 
-# In[21]:
+# In[104]:
 
 
 joint_probs = joint_probabilities(coocurrence_matrix)
@@ -162,7 +238,7 @@ marginal_probs = marginal_probabilities(joint_probs)
 ppmi_matrix = ppmi(joint_probs, marginal_probs)
 
 
-# In[22]:
+# In[105]:
 
 
 print("Probabilidades conjuntas:\n", joint_probs)
@@ -189,18 +265,16 @@ display(ppmi_matrix_dataframe)
 # 
 # Así mismo, la elección del tamaño de vector de 300 de longitud se debe a que suele ser el tamaño común que se usa para este tipo de representaciones.
 
-# In[47]:
+# In[ ]:
 
 
 from gensim.models import word2vec
 from enum import Enum
 import random
 
-###################
-#
-# Código de clase
-#
-###################
+##############################
+# Código creado en ayudantía
+##############################
 
 MODELS_DIR = 'Model/'
 
@@ -254,13 +328,13 @@ def report_stats(model) -> None:
     print("Applied context length for generating the model: ", model.window)
 
 
-# In[90]:
+# In[107]:
 
 
 get_ipython().run_cell_magic('time', '', 'cbow_model = train_model(\n    sentences,\n    "fake_news_corpus_spanish",\n    vector_size=300,\n    window=10, # una ventana contextual de 10 palabras, por ambos lados de la palabra central. \n    workers=2,\n    algorithm=Algorithms.CBOW\n)\n')
 
 
-# In[91]:
+# In[108]:
 
 
 report_stats(cbow_model)
@@ -268,14 +342,14 @@ report_stats(cbow_model)
 
 # ## Realizando la comparación de resultados
 
-# In[92]:
+# In[113]:
 
 
 vector_cbow = cbow_model.wv["comunista"]
 
 vector_distribucional = list(ppmi_matrix_dataframe.iloc[[indices['comunista']]].values[0])
 
-print('Observando los dos vectores generados por cada vectorizador:')
+print('Observando los dos vectores generados por cada vectorizador de la palabra Comunista:')
 print('Vector generado con Word2Vec Cbow:',vector_cbow)
 print('\n')
 print('Vector distribucional:',vector_distribucional)
@@ -288,7 +362,7 @@ print('Vector distribucional:',vector_distribucional)
 
 # ## Realizando representación con 100 vectores aleatorios
 
-# In[94]:
+# In[110]:
 
 
 from sklearn.decomposition import PCA
@@ -313,7 +387,7 @@ w2v_2d = pca.fit_transform(vectores_w2v)
 ppmi_2d = pca.fit_transform(ppmi_vectores)
 
 
-# In[97]:
+# In[111]:
 
 
 import matplotlib.pyplot as plt
@@ -350,4 +424,24 @@ plt.show()
 # 
 # 
 
-# **A grandes rasgos**, podemos notar que en efecto parece existir una misma tendencia a cómo se están agrupando los vectores. Siendo que en las dos representaciones vectoriales se tiene una distribución hacía la derecha para la mayoría de palabras seleccionadas. Mientras que hay pocas palabras en el lado izquierdo. De manera general podríamos decir que sí hay una 
+# **A grandes rasgos**, podemos notar que en efecto parece existir una misma tendencia a cómo se están agrupando los vectores. Siendo que en las dos representaciones vectoriales se tiene una distribución hacía la derecha para la mayoría de palabras seleccionadas. Mientras que hay pocas palabras en el lado izquierdo. De manera general podríamos decir que sí hay una representación más o menos similar usando ambos formas de vectorizar.
+# 
+# **Con más detalle**: Vemos para el caso de Word2Vec se manera muy bien la dispersión entre vectores, de manera que el intervalo donde se define cada vector también es muy chico, a comparación de los vectores creados con la matriz de co-ocurrencia, nos da el problema que no parece guardar tan bien la relación semántica existente entre los vectores, algo que sí parece lograr word2vec, donde vemos que al estar agrupados más cerca podemos intuir que existe una relación semántica para esos vectores. Pero en el caso de los vectores distribucionales no tenemos tan claro, parece existir una tendencia pero solo eso.  Así mismo, otro problema que tenemos con respecto a estos vectores es que en el gran intervalo donde se encuentran definidos, lo cual puede ser consecuencia directa de su dipsersión y la manera en que se representan los vectores en el espacio, por ello parece que tienen mayores distancias entre ellos.
+# 
+# Por lo anterior, se puede decir que word 2 vec parece capturar de mejor manera las relaciones semánticas.
+# 
+# | **Característica**                   | **Word2Vec**                                                                 | **Vectores con Matriz de Co-ocurrencias**                           |
+# |-------------------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------|
+# | **Ventajas**                        | 1. El tamaño del vector es un hiperparámetro ajustable.                     | 1. Los vectores son más baratos de computar.                      |
+# |                                     | 2. Ofrecen representaciones no tan dispersas.                              | 2. Ofrecen cierto grado de representación semántica.              |
+# |                                     | 3. Representan mejor las relaciones semánticas.                            | 3. Son interpretables.                                             |
+# |                                     | 4. Ofrecen mayor calidad en su representación.                             |                                                                   |
+# |                                     | 5. Pueden manejar palabras no vistas.                                      |                                                                   |
+# | **Desventajas**                     | 1. Costosos de computar debido al backpropagation.                          | 1. Su representación semántica es limitada.                      |
+# |                                     | 2. Necesitan un gran corpus para el entrenamiento.                         | 2. Presentan una gran dispersión en sus datos (mayoría de ceros). |
+# |                                     | 3. Dependen del corpus para manejar palabras no vistas.                    | 3. El tamaño de los vectores suele ser demasiado grande.          |
+# |                                     |                                                                             | 4. Necesitan un corpus grande para hacer buenas representaciones. |
+# |                                     |                                                                             | 5. Manejan mal palabras no vistas.                                |
+# 
+# 
+# 
