@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "elotl>=0.1.1",
+    "datasets>=3.3.2",
     "gensim>=4.3.3",
     "jupyter>=1.1.1",
     "jupyter-ruff>=0.2.0",
@@ -23,4 +24,5 @@ dependencies = [
     "sklearn-crfsuite>=0.5.0",
     "spacy>=3.8.4",
     "transformers>=4.49.0",
+    "wikiextractor>=3.0.6",
 ]
