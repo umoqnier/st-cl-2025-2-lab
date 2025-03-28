@@ -140,6 +140,8 @@ A partir del modelo entrenado:
 
 - Seleccione algunas palabras y verifique sí realmente codifican nociones semánticas, e,g, similitud semántica con similitud coseno entre dos vectores, analogías por medios de operaciones de vectores
 
+**NOTA**: Puedes entrenar el modelo replicando la ejecución del notebook o encontrar el modelo entrenado en la [carpeta de drive](https://drive.google.com/drive/folders/1Mq-UA0ct5iTp-7h8-SxJxwyjdMHXmwO4?usp=drive_link)
+
 ### Extra (0.5 pts):
 
 - Correr el modelo de Bengio pero aplicando una técnica de subword tokenization al corpus y hacer generación del lenguaje
