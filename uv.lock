@@ -1199,6 +1199,18 @@ wheels = [
 ]
 
 [[package]]
+name = "jupyterlab-vim"
+version = "4.1.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jupyterlab" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/17/d8/3ff5da56fc66a7b751925810c4e4b6a888c8b1e7a7c53b38e5492d1357fd/jupyterlab_vim-4.1.4.tar.gz", hash = "sha256:abf2891aafb32f0cb94ad98321ae7ebcbe0cabe523d38d80d569c0a50b85225a", size = 153262 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a6/2f/65805236702729ebaa19ba34bd977a4582df2a020a365f8cc49445de2a8d/jupyterlab_vim-4.1.4-py3-none-any.whl", hash = "sha256:13c29ff1fd385fddf33eb85a8b16441be69c62032870bb97a3054b2cf00ab135", size = 67065 },
+]
+
+[[package]]
 name = "jupyterlab-widgets"
 version = "3.0.13"
 source = { registry = "https://pypi.org/simple" }
@@ -2976,6 +2988,7 @@ dependencies = [
     { name = "jupyter" },
     { name = "jupyter-ruff" },
     { name = "jupyterlab" },
+    { name = "jupyterlab-vim" },
     { name = "jupytext" },
     { name = "matplotlib" },
     { name = "nltk" },
@@ -3000,6 +3013,7 @@ requires-dist = [
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "jupyter-ruff", specifier = ">=0.2.0" },
     { name = "jupyterlab", specifier = ">=4.3.4" },
+    { name = "jupyterlab-vim", specifier = ">=4.1.4" },
     { name = "jupytext", specifier = ">=1.16.6" },
     { name = "matplotlib", specifier = ">=3.10.0" },
     { name = "nltk", specifier = ">=3.9.1" },
