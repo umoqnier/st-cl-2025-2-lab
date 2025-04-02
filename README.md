@@ -147,3 +147,21 @@ A partir del modelo entrenado:
 - Correr el modelo de Bengio pero aplicando una técnica de subword tokenization al corpus y hacer generación del lenguaje
 
 - La generación del lenguaje debe ser secuencias de palabras (no subwords)
+
+## Práctica 5: Tech evolution. Caso *POS Tagging*
+
+**Fecha de entrega: 13 de Abril 2025 11:59pm**
+
+- Obten los embeddings de 100 palabras al azar del modelo RNN visto en clase
+  - Pueden ser los embeddings estáticos o los dinámicos del modelo
+- Aplica un algoritmo de clusterización a las palabras y plotearlas en 2D
+  - Aplica algun color para los diferentes clusters
+- Agrega al plot los embeddings de las etiquetas POS
+  - Utiliza un marcador que las distinga claramente de las palabras
+- Realiza una conclusión sobre los resultados observados
+
+### Extra: 0.5pt
+
+- Implementa una red *Long short-term memory units (LSTM)* para la tarea de etiquetado POS
+- Reporta el accuracy y comparalo con los resultados de la RNN simple
+- Realiza un comentario sobre como impacta la arquitectura LSTM sobre el resultado obtenido
