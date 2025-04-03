@@ -127,3 +127,41 @@ Aplica reducción de dimensionalidad (a 2D) de los vectores de la matríz con PP
 - Compara los resultados de los plots:
     - ¿Qué representación dirías que captura mejor relaciones semánticas?
     - Realiza un cuadro comparativo de ambos métodos con ventajas/desventajas
+
+## Práctica 4: Modelos del Lenguaje Neuronales
+
+**Fecha de entrega: 6 de abril de 2025 11:59pm**
+
+A partir del modelo entrenado:
+
+- Sacar los embeddings de las palabras del vocabulario
+
+- Visualizar en 2D los embeddings de algunas palabras (quizá las más frecuentes, excluyendo stopwords)
+
+- Seleccione algunas palabras y verifique sí realmente codifican nociones semánticas, e,g, similitud semántica con similitud coseno entre dos vectores, analogías por medios de operaciones de vectores
+
+**NOTA**: Puedes entrenar el modelo replicando la ejecución del notebook o encontrar el modelo entrenado en la [carpeta de drive](https://drive.google.com/drive/folders/1Mq-UA0ct5iTp-7h8-SxJxwyjdMHXmwO4?usp=drive_link)
+
+### Extra (0.5 pts):
+
+- Correr el modelo de Bengio pero aplicando una técnica de subword tokenization al corpus y hacer generación del lenguaje
+
+- La generación del lenguaje debe ser secuencias de palabras (no subwords)
+
+## Práctica 5: Tech evolution. Caso *POS Tagging*
+
+**Fecha de entrega: 13 de Abril 2025 11:59pm**
+
+- Obten los embeddings de 100 palabras al azar del modelo RNN visto en clase
+  - Pueden ser los embeddings estáticos o los dinámicos del modelo
+- Aplica un algoritmo de clusterización a las palabras y plotearlas en 2D
+  - Aplica algun color para los diferentes clusters
+- Agrega al plot los embeddings de las etiquetas POS
+  - Utiliza un marcador que las distinga claramente de las palabras
+- Realiza una conclusión sobre los resultados observados
+
+### Extra: 0.5pt
+
+- Implementa una red *Long short-term memory units (LSTM)* para la tarea de etiquetado POS
+- Reporta el accuracy y comparalo con los resultados de la RNN simple
+- Realiza un comentario sobre como impacta la arquitectura LSTM sobre el resultado obtenido
