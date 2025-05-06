@@ -165,3 +165,23 @@ A partir del modelo entrenado:
 - Implementa una red *Long short-term memory units (LSTM)* para la tarea de etiquetado POS
 - Reporta el accuracy y comparalo con los resultados de la RNN simple
 - Realiza un comentario sobre como impacta la arquitectura LSTM sobre el resultado obtenido
+
+## Práctica 6: *Fine-tuning en producción*
+
+**Fecha de entrega: 11 de Mayo de 2025 11:59pm**
+
+- Selecciona un modelo pre-entrenado como base y realiza *fine-tuning* para resolver alguna tarea de NLP que te parezca reelevante
+  - Procura utilizar datasets pequeños para que sea viable
+  - Recuerda las posibles tareas disponibles en HF `*For<task>`
+- Desarrolla y pon en producción un prototipo del modelo
+  - Incluye una URL pública donde podamos ver tu proyecto
+  - Recomendamos usar framewoks de prototipado (*streamlit* o *gradio*) y el *free-tier* de *spaces* de hugging face
+    - https://huggingface.co/spaces/launch
+    - https://huggingface.co/docs/hub/spaces-sdks-streamlit
+    - https://huggingface.co/docs/hub/spaces-sdks-gradio
+- Reporta que tan bien se resolvió la tarea y que tan útil fue tu app
+- Reporta retos y dificultades al realizar el *fine-tuning* y al poner tu modelo en producción
+
+### Extra: 0.5pt
+
+- Utiliza [code carbon](https://codecarbon.io/#howitwork) para reportar las emisiones de tu app
