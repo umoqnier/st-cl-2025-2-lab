@@ -25,4 +25,5 @@ dependencies = [
     "spacy>=3.8.4",
     "transformers>=4.49.0",
     "wikiextractor>=3.0.6",
+    "jupyterlab-vim>=4.1.4",
 ]
