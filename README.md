@@ -140,8 +140,86 @@ A partir del modelo entrenado:
 
 - Seleccione algunas palabras y verifique sí realmente codifican nociones semánticas, e,g, similitud semántica con similitud coseno entre dos vectores, analogías por medios de operaciones de vectores
 
+**NOTA**: Puedes entrenar el modelo replicando la ejecución del notebook o encontrar el modelo entrenado en la [carpeta de drive](https://drive.google.com/drive/folders/1Mq-UA0ct5iTp-7h8-SxJxwyjdMHXmwO4?usp=drive_link)
+
 ### Extra (0.5 pts):
 
 - Correr el modelo de Bengio pero aplicando una técnica de subword tokenization al corpus y hacer generación del lenguaje
 
 - La generación del lenguaje debe ser secuencias de palabras (no subwords)
+
+## Práctica 5: Tech evolution. Caso *POS Tagging*
+
+**Fecha de entrega: 13 de Abril 2025 11:59pm**
+
+- Obten los embeddings de 100 palabras al azar del modelo RNN visto en clase
+  - Pueden ser los embeddings estáticos o los dinámicos del modelo
+- Aplica un algoritmo de clusterización a las palabras y plotearlas en 2D
+  - Aplica algun color para los diferentes clusters
+- Agrega al plot los embeddings de las etiquetas POS
+  - Utiliza un marcador que las distinga claramente de las palabras
+- Realiza una conclusión sobre los resultados observados
+
+### Extra: 0.5pt
+
+- Implementa una red *Long short-term memory units (LSTM)* para la tarea de etiquetado POS
+- Reporta el accuracy y comparalo con los resultados de la RNN simple
+- Realiza un comentario sobre como impacta la arquitectura LSTM sobre el resultado obtenido
+
+## Práctica 6: *Fine-tuning en producción*
+
+**Fecha de entrega: 11 de mayo de 2025 11:59pm**
+
+- Selecciona un modelo pre-entrenado como base y realiza *fine-tuning* para resolver alguna tarea de NLP que te parezca reelevante
+  - Procura utilizar datasets pequeños para que sea viable
+  - Recuerda las posibles tareas disponibles en HF `*For<task>`
+- Desarrolla y pon en producción un prototipo del modelo
+  - Incluye una URL pública donde podamos ver tu proyecto
+  - Recomendamos usar framewoks de prototipado (*streamlit* o *gradio*) y el *free-tier* de *spaces* de hugging face
+    - https://huggingface.co/spaces/launch
+    - https://huggingface.co/docs/hub/spaces-sdks-streamlit
+    - https://huggingface.co/docs/hub/spaces-sdks-gradio
+- Reporta que tan bien se resolvió la tarea y que tan útil fue tu app
+- Reporta retos y dificultades al realizar el *fine-tuning* y al poner tu modelo en producción
+
+### Extra: 0.5pt
+
+- Utiliza [code carbon](https://codecarbon.io/#howitwork) para reportar las emisiones de tu app
+
+## Práctica final: Construcción de un *Retrieval-augmented Generation (RAG)* especializado
+
+**Fecha de entrega: 25 de mayo de 2025 11:59pm**
+
+Desarrolla en equipos de dos/tres personas una aplicación *user-friendly* que implemente un RAG con algún LLM "ligero" local usando `ollama`
+
+### Requerimientos
+
+- Deberá correr "razonablemente bien" en sus laptops
+- Interface de usuaria
+  - Puede ser CLI o GUI
+    - Opciones GUI: [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/)
+    - Opciones CLI: [Argparse](https://docs.python.org/3/library/argparse.html), [Click](https://click.palletsprojects.com/en/stable/)
+  - La usuaria deberia poder agregar sus documentos personales en local
+    - El soporte de formatos queda a su consideración
+      - CSVs, txts, pdfs o todos 
+- Agrega documentación sobre el uso y capacidades del sistema
+  - Recursos sobre documentaciones perronas: https://diataxis.fr/
+- Agrega una reflexión sobre las limitaciones del sistema y problemas sociales que puedan surgir de los mismos como riesgos, sesgos, protección de datos, implicaciones éticas y su impacto en la diversidad social.
+  - Aborda los temas que consideres más reelevantes, no necesariamente todos
+
+
+### Ideas de apps (elige una)
+
+#### StudyBuddy
+
+Aplicación que con base en tus notas de clase y documentos relacionados te ayuda a estudiar para pasar tu examen final.
+
+#### LegalLangSimplifier
+
+Poder hacer queries en un conjunto de documentos legales (el diario oficial de la federación, la constitución, reglamento de tránsito, mi contrato de empleado de la UNAM) y obtener respuestas entendibles para cualquier persona sin especialización en este lenguaje.
+
+#### La app que quieras proponer 🧙🏼‍♂️
+
+> Deben utilizar RAG
+
+**NOTA:** Experimenten con modelos pequeños para la etapa de desarrollo, modifiquen los prompts y consideren las limitantes de recursos de cómputo
