@@ -168,7 +168,7 @@ A partir del modelo entrenado:
 
 ## Práctica 6: *Fine-tuning en producción*
 
-**Fecha de entrega: 11 de Mayo de 2025 11:59pm**
+**Fecha de entrega: 11 de mayo de 2025 11:59pm**
 
 - Selecciona un modelo pre-entrenado como base y realiza *fine-tuning* para resolver alguna tarea de NLP que te parezca reelevante
   - Procura utilizar datasets pequeños para que sea viable
@@ -185,3 +185,41 @@ A partir del modelo entrenado:
 ### Extra: 0.5pt
 
 - Utiliza [code carbon](https://codecarbon.io/#howitwork) para reportar las emisiones de tu app
+
+## Práctica final: Construcción de un *Retrieval-augmented Generation (RAG)* especializado
+
+**Fecha de entrega: 25 de mayo de 2025 11:59pm**
+
+Desarrolla en equipos de dos/tres personas una aplicación *user-friendly* que implemente un RAG con algún LLM "ligero" local usando `ollama`
+
+### Requerimientos
+
+- Deberá correr "razonablemente bien" en sus laptops
+- Interface de usuaria
+  - Puede ser CLI o GUI
+    - Opciones GUI: [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/)
+    - Opciones CLI: [Argparse](https://docs.python.org/3/library/argparse.html), [Click](https://click.palletsprojects.com/en/stable/)
+  - La usuaria deberia poder agregar sus documentos personales en local
+    - El soporte de formatos queda a su consideración
+      - CSVs, txts, pdfs o todos 
+- Agrega documentación sobre el uso y capacidades del sistema
+  - Recursos sobre documentaciones perronas: https://diataxis.fr/
+- Agrega una reflexión sobre las limitaciones del sistema y problemas sociales que puedan surgir de los mismos como riesgos, sesgos, protección de datos, implicaciones éticas y su impacto en la diversidad social.
+  - Aborda los temas que consideres más reelevantes, no necesariamente todos
+
+
+### Ideas de apps (elige una)
+
+#### StudyBuddy
+
+Aplicación que con base en tus notas de clase y documentos relacionados te ayuda a estudiar para pasar tu examen final.
+
+#### LegalLangSimplifier
+
+Poder hacer queries en un conjunto de documentos legales (el diario oficial de la federación, la constitución, reglamento de tránsito, mi contrato de empleado de la UNAM) y obtener respuestas entendibles para cualquier persona sin especialización en este lenguaje.
+
+#### La app que quieras proponer 🧙🏼‍♂️
+
+> Deben utilizar RAG
+
+**NOTA:** Experimenten con modelos pequeños para la etapa de desarrollo, modifiquen los prompts y consideren las limitantes de recursos de cómputo
