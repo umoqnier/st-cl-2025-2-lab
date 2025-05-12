@@ -26,4 +26,9 @@ dependencies = [
     "transformers>=4.49.0",
     "wikiextractor>=3.0.6",
     "jupyterlab-vim>=4.1.4",
+    "langchain-text-splitters>=0.3.8",
+    "langchain-community>=0.3.21",
+    "langgraph>=0.4.3",
+    "langchain-ollama>=0.3.2",
+    "langchain-chroma>=0.2.2",
 ]
