@@ -1,0 +1,1 @@
+Para ejecutar sólo hay que ejecutar todas las celdas de manera secuencial y todo debería de funcionar :) (si hay error al importar gensim, se requiere reiniciar la sesión/kernel y todo chill)
