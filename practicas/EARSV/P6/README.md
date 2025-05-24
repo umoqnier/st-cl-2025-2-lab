@@ -1,0 +1,5 @@
+#Práctica 6 de Temas Selectos de Procesamiento de Lenguaje Natural
+
+En esta práctica realizamos un fine tunning de BERT, donde lo entrenamos con [Sarcasm News Headline](https://huggingface.co/datasets/raquiba/Sarcasm_News_Headline), dicho dataset disponible en Hugging Face tiene 55k títulos de noticia etiquetados como sarcásticos y no sarcásticos. 28k pertenecen al conjunto de entrenamiento y 27k para el conjunto de prueba. El modelo entrenado fue guardado en [Hugging Face Models](https://huggingface.co/EARSV/sarcasm-detector) y se realizó una app en [Hugging Face Space](https://huggingface.co/spaces/EARSV/sarcasm-detector-app) la cual aplica el modelo y determina si el título de un artículo es sarcástico o no.
+
+Para ejecutar la práctica se debe de verificar el archivo de requerimentos y ejecutar todo en su propio repositorio. Se anexan los archivos .ipynb del notebook donde fue entrenado el modeloy el archivo .py correspondiente a la aplicación subida en Hugging Space.
