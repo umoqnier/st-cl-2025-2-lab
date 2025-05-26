@@ -31,4 +31,5 @@ dependencies = [
     "langgraph>=0.4.3",
     "langchain-ollama>=0.3.2",
     "langchain-chroma>=0.2.2",
+    "torch>=2.7.0",
 ]
