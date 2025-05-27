@@ -142,4 +142,4 @@ Para más información se puede consultar el documento [requirements.yml](requir
 
 ## Notas 📝
 - Se utilizaron LLM’s 🤖 para la realización de documentación y formato del código. Así como la realización de esta documentación tipo Diátaxis.
-- La aplicación para Hugginface fue realizada con el SDK de Gradio y se puede ver el diseño de la "interfaz" en el archivo [app.py](app.py).
+- La aplicación fue realizada con `streamlit` y se puede ver el diseño de la "interfaz" en el archivo [app.py](app.py).
