@@ -85,6 +85,27 @@ StudyBuddy implementa un sistema **RAG (Retrieval-Augmented Generation)** local:
 
 ---
 
+## Reflexión: Limitaciones y consideraciones éticas
+
+Aunque **StudyBuddy** ofrece una potente herramienta de estudio basada en RAG, es importante reconocer sus limitaciones y los posibles riesgos sociales:
+
+1. **Alucinaciones y veracidad**
+
+   * El LLM puede inventar información («hallucinations») al no distinguir claramente entre hechos y sintetizaciones creativas.
+
+2. **Protección de datos y privacidad**
+
+   * Al ingestar documentos personales, existe riesgo de exponer datos sensibles si la app se comparte o se aloja en la nube.
+
+3. **Implicaciones éticas**
+
+   * Dependencia excesiva en IA: los estudiantes podrían sustituir el pensamiento crítico por respuestas automáticas.
+   * Desigualdad de acceso: requiere hardware relativamente potente (RAM, CPU) para correr localmente, lo cual puede excluir a usuarios con recursos limitados.
+
+> **Conclusión**: StudyBuddy es una herramienta valiosa para potenciar el aprendizaje, pero debe usarse con **conciencia crítica**, complementada con supervisión humana y prácticas responsables para minimizar riesgos de falta de veracidad, privacidad y exclusión social.
+
+---
+
 ## Entorno de desarrollo 🌐
 - Fedora Linux 42 (Worstation Edition) 🐧
 - Python 3.11.12 🐍
