@@ -1,4 +1,3 @@
-# main.py
 from StudyBuddy import StudyBuddyAssistant
 import streamlit as st
 import os
@@ -10,10 +9,9 @@ def main():
     # Sidebar para la configuración
     with st.sidebar:
         st.header("Configuración")
-        model_name = st.selectbox("Modelo LLM:", ["llama3.2", "mistral"]) # Agrega más opciones si es necesario
-        embedding_model = st.selectbox("Modelo de Embeddings:", ["nomic-embed-text:latest", "all-MiniLM-L6-v2"]) # Agrega más opciones
-        documents_dir = "pdfs_notes"  # Directorio fijo para este ejemplo
-
+        model_name = st.selectbox("Modelo LLM:", ["llama3.2"]) 
+        embedding_model = st.selectbox("Modelo de Embeddings:", ["nomic-embed-text:latest", "all-MiniLM-L6-v2"]) 
+        documents_dir = "pdfs_notes" 
         # Asegurarse de que el directorio de documentos exista
         if not os.path.exists(documents_dir):
             os.makedirs(documents_dir)
