@@ -139,6 +139,7 @@ Para más información se puede consultar el documento [requirements.yml](requir
 ## Integrantes
 - [fwgalde](https://github.com/fwgalde)
 - [EARSV](https://github.com/EARSV)
+- [AlejandroTorres03](https://github.com/AlejandroTorres03)
 
 ## Notas 📝
 - Se utilizaron LLM’s 🤖 para la realización de documentación y formato del código. Así como la realización de esta documentación tipo Diátaxis.
