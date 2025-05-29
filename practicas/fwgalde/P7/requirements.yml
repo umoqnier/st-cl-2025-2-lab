@@ -1,0 +1,17 @@
+dependencies:
+  - chromadb
+  - ipywidgets
+  - jupyterlab
+  - langchain
+  - langchain-chroma
+  - langchain-community
+  - langchain-huggingface
+  - langchain-text-splitters
+  - loguru
+  - pypdf
+  - python=3.11
+  - rich
+  - sentence-transformers
+  - streamlit
+  - pip:
+    - langchain-ollama==0.3.3
