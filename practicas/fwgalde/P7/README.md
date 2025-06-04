@@ -3,16 +3,18 @@
 # StudyBuddy Documentation
 
 ## Tutorial: ¡Primeros pasos con StudyBuddy!
-1. **Clona el repositorio**:
+1. **Clona el repositorio y cambia de rama**:
 
    ```bash
    git clone https://github.com/fwgalde/st-cl-2025-2-lab.git
+   git switch feature/practica7
    cd practicas/fwgalde/P7
    ```
 2. **Instala dependencias**:
 
    ```bash
    mamba env create --name <entorno> -f requirements.yml
+   mamba activate <entorno>
    ```
 3. **Descarga modelos** (asegúrate de tener Ollama corriendo):
 
