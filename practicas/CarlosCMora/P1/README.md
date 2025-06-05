@@ -1,0 +1,2 @@
+## Comentarios
+Se utilizo IA generativa para comentar el código.  Aunque se reviso posteriormente y corrigió cualquier error al comentar el códigp. De igual forma, se utilizó como apoyo para asignar los nombres de la categoría en la gráfica de las distribuciones.
