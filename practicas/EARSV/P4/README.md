@@ -1,0 +1,1 @@
+Holi, para ejecutar todo el código con problema sólo hay que hacerlo de manera secuencial y checar el path del modelo entrenado en clase, actualizarlo a su path y listo jsjs
