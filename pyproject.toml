@@ -32,4 +32,6 @@ dependencies = [
     "langchain-ollama>=0.3.2",
     "langchain-chroma>=0.2.2",
     "torch>=2.7.0",
+    "gradio>=5.33.0",
+    "pymupdf>=1.26.0",
 ]
