@@ -1,0 +1,11 @@
+gradio
+langchain
+langgraph
+langchain-community
+langchain-core
+langchain-ollama
+langchain-chroma
+ollama
+chromadb
+PyMuPDF
+rich
