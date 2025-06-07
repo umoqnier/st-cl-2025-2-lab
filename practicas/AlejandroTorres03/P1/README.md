@@ -1,0 +1,1 @@
+Para la correcta ejecución de la práctica simplemente es necesario ejecutar las celdas del notebook.
