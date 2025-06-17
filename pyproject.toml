@@ -34,4 +34,8 @@ dependencies = [
     "torch>=2.7.0",
     "gradio>=5.33.0",
     "pymupdf>=1.26.0",
+    "streamlit>=1.45.1",
+    "pypdf>=5.5.0",
+    "ipywidgets>=8.1.5",
+    "langchain-huggingface>=0.2.0",
 ]
